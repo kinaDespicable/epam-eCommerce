@@ -43,6 +43,7 @@
         <li class="nav-item"><a th:href="@{/signup}" class="nav-link fw-500 blue-bg">Sign Up</a></li>
     </ul>
     <ul class="nav nav-pills" sec:authorize="isAuthenticated()">
+        <li class="nav-item"><a th:href="@{/cart}" class="nav-link fw-500 blue-bg">Cart</a></li>
         <li class="nav-item" sec:authorize="hasAnyRole('ROLE_USER')">
             <a th:href="@{/profile}" class="nav-link fw-500 blue-bg" th:text="${#strings.arraySplit(#authentication.name, '@')[0]}"></a>
         </li>

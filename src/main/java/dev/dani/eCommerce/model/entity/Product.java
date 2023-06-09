@@ -39,9 +39,9 @@ public class Product {
     private Integer quantity;
 
     @Column(name = "is_adult")
-    private boolean isAdult;
+    private boolean adult;
 
-    @Column(name = "unit_price", columnDefinition = "MONEY")
+    @Column(name = "unit_price")
     private BigDecimal unitPrice;
 
     @JoinColumn(name = "category_id")
@@ -62,7 +62,7 @@ public class Product {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Product product)) return false;
-        return isAdult == product.isAdult &&
+        return adult == product.adult &&
                 Objects.equals(id, product.id) &&
                 Objects.equals(name, product.name) &&
                 Objects.equals(description, product.description) &&
@@ -73,6 +73,6 @@ public class Product {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, image, isAdult, category, gender);
+        return Objects.hash(id, name, description, image, adult, category, gender);
     }
 }

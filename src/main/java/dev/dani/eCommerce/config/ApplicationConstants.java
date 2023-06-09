@@ -16,7 +16,10 @@ public enum ApplicationConstants {
     REQUEST("request"),
     USER("user"),
     FAILED("failed"),
-    NEW_PRODUCT("New product");
+    NEW_PRODUCT("New product"),
+    CART("Cart"),
+    CART_GUEST("Guest cart"),
+    CATEGORY("Category");
 
 
     private final String value;

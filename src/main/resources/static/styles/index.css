@@ -70,3 +70,9 @@
     line-height: 1;
     text-shadow: 2px 2px 20px rgba(0, 0, 0, .2);
 }
+.product-image{
+    max-height: 300px;
+}
+.female-badge{
+    background-color: #be0aa6;
+}

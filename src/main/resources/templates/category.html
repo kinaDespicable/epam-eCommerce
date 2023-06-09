@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org">
 <head>
     <head th:replace="~{fragments :: head}"></head>
     <title th:text="${pageTitle}"></title>
@@ -9,7 +8,6 @@
 <header th:replace="~{fragments :: mainHeader}"></header>
 <main>
     <div class="container">
-
         <div class="goods d-flex justify-content-around flex-wrap">
             <div th:if="${#lists.size(products.getContent()) <= 0}">
                 <p>There is no products yet :(</p>
@@ -27,11 +25,6 @@
                                     <div class="mask">
                                         <div class="d-flex justify-content-start align-items-end h-100 my-3">
                                             <h5><span class="badge ms-2 bg-primary" th:text="${product.getGender().getGender()}"></span></h5>
-                                            <h5 th:if="${product.quantity == 0}">
-                                                <span class="badge ms-2 bg-info">
-                                                    Not in stock
-                                                </span>
-                                            </h5>
                                         </div>
                                     </div>
                                     <div class="hover-overlay">
@@ -85,7 +78,6 @@
             </ul>
         </nav>
     </div>
-
 </main>
 </body>
 </html>

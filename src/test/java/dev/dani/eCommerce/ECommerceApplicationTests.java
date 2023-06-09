@@ -10,4 +10,10 @@ class ECommerceApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void testMainMethod() {
+		String[] args = {};
+		ECommerceApplication.main(args);
+	}
+
 }

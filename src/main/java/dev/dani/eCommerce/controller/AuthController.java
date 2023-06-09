@@ -70,12 +70,4 @@ public class AuthController {
         return "redirect:/";
     }
 
-    @ExceptionHandler({PasswordMismatchException.class,
-            ResourceAlreadyExistException.class,
-            ResourceNotFoundException.class,
-            UsernameNotFoundException.class})
-    public String authExceptionHandler(RuntimeException exception, RedirectAttributes redirectAttributes) {
-        redirectAttributes.addAttribute("errorMessage", exception.getMessage());
-        return "redirect:signup";
-    }
 }

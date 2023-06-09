@@ -65,5 +65,17 @@ public class User {
     @OneToMany(mappedBy = "customer", cascade = CascadeType.MERGE)
     private Set<CartItem> cartItems = new HashSet<>();
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User user)) return false;
+        return Objects.equals(id, user.id) &&
+                Objects.equals(email, user.email) &&
+                Objects.equals(registrationDate, user.registrationDate);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, email, registrationDate);
+    }
 }

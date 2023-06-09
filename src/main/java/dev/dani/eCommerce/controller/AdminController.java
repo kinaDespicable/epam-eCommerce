@@ -1,15 +1,13 @@
 package dev.dani.eCommerce.controller;
 
 import dev.dani.eCommerce.config.security.SecurityUtils;
-import dev.dani.eCommerce.exception.PasswordMismatchException;
-import dev.dani.eCommerce.exception.ResourceAlreadyExistException;
-import dev.dani.eCommerce.exception.ResourceNotFoundException;
 import dev.dani.eCommerce.model.dto.request.auth.RegistrationRequest;
 import dev.dani.eCommerce.model.dto.request.category.CategoryRequest;
 import dev.dani.eCommerce.model.dto.request.product.ProductRequest;
 import dev.dani.eCommerce.model.entity.Category;
 import dev.dani.eCommerce.model.entity.User;
 import dev.dani.eCommerce.service.CategoryService;
+import dev.dani.eCommerce.service.ProductService;
 import dev.dani.eCommerce.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +30,7 @@ public class AdminController {
 
     private final UserService userService;
     private final CategoryService categoryService;
+    private final ProductService productService;
 
 
     @GetMapping
@@ -108,10 +107,10 @@ public class AdminController {
                     });
             return "redirect:addProduct";
         }
-//        productService.create(productRequest);
-//        boolean savedInDB = productService.existsByProductName(productRequest.getProductName());
+        productService.create(productRequest);
+        boolean savedInDB = productService.existsByProductName(productRequest.getProductName());
 
-//        redirectAttributes.addAttribute("newProduct", savedInDB);
+        redirectAttributes.addAttribute("newProduct", savedInDB);
         return "redirect:addProduct";
     }
 
@@ -213,22 +212,6 @@ public class AdminController {
         return "redirect:../userList";
     }
 
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public String resourceNotFoundExceptionHandler(RuntimeException exception, RedirectAttributes redirectAttributes) {
-        redirectAttributes.addAttribute("errorMessage", exception.getMessage());
-        return "redirect:singleUser";
-    }
 
-    @ExceptionHandler(ResourceAlreadyExistException.class)
-    public String resourceAlreadyExistExceptionHandler(RuntimeException exception, RedirectAttributes redirectAttributes) {
-        redirectAttributes.addAttribute("errorMessage", exception.getMessage());
-        return "redirect:categoryList";
-    }
-
-    @ExceptionHandler(PasswordMismatchException.class)
-    public String passwordMismatchExceptionHandler(RuntimeException exception, RedirectAttributes redirectAttributes) {
-        redirectAttributes.addAttribute("errorMessage", exception.getMessage());
-        return "redirect:categoryList";
-    }
 
 }
