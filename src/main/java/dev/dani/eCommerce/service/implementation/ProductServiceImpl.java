@@ -12,6 +12,7 @@ import dev.dani.eCommerce.service.CategoryService;
 import dev.dani.eCommerce.service.GenderService;
 import dev.dani.eCommerce.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ import java.util.Optional;
 
 import static dev.dani.eCommerce.service.Page.getPageable;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService, Validatable<ProductRequest> {
@@ -65,7 +67,7 @@ public class ProductServiceImpl implements ProductService, Validatable<ProductRe
                 .build();
 
         productRepository.save(product);
-
+        log.info("Product was created");
     }
 
     @Override
